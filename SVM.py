@@ -17,9 +17,12 @@ def main():
     X = X.reset_index(drop=True)
     C=1.0
     print(X_test)
-    clf = svm.SVC(C=C, kernel='rbf', probability=True)
+    clf = svm.SVC(C=C, cache_size=200, class_weight=None, coef0=0.0,
+                  decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf',
+                  max_iter=-1, probability=True, random_state=500, shrinking=True,
+                  tol=0.001, verbose=False)
     #take first 200 sample
-    results =clf.fit(X_test[0:200], Y_test[0:200]) 
+    results =clf.fit(X_test[0:1000], Y_test[0:1000])
     score=results.score(X_test, Y_test)
     
     #prediction 
